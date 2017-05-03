@@ -1,0 +1,16 @@
+#+TITLE: wmux worklog
+#+AUTHOR: Lixin Yu
+#+LATEX: \newpage
+
+* 20170503
+** magit					  :auxiliaryWork:emacs:magit:
+Manage to use magit in emacs to accelerate the speed of orgnizing my worklog
+** wmux								  :idea:wmux:
+The wmux is short for Web mux, kind of feeling like tmux. It means I hope the web can be split into several different workspace as user expects.
+** DONE add account					    :cluster:account:
+The account can not be added because my account on datacenter is not in the sudoers file and i can't run cmgui.
+- I add 2 accounts:
+  - dominik schleicher: pwd: 123456
+  - jinhua he: pwd: 123456
+The users will be the one who will make simulations on the cluster.
+** TODO lustre file not mounted				    :cluster:problem:
