@@ -1,0 +1,30 @@
+#+TITLE: Datacenter worklog
+#+AUTHOR: Lixin Yu
+#+LATEX: \newpage
+
+* 20170504
+** internal meeting
+*** Past Week Report
+1. I introduce Basic Oracle DB operation.
+2. chunhui report the work on NGAS: NGAS use DBUtils package to connect to database and it also use another specific package to connect to the specific database(e.g.: for oracle, the specific package is cx_oracle)
+3. I introduce the communication mechanism of JS and JAVA both through wssocket and through gwt.
+4. we discuss the exhibition of FITS file. Lei make the proposal of showing the fits file according to requirement of users. We think this should be a value-added product.
+*** Next Work
+1. I would spend 2 weeks to build the frame of the website.
+2. chunhui would continue the explore with the NGAS and make clear of how the connection work
+3. Lei would come back to China to do some report and would spend sometime in extracting the metadata from ASDM and fits.
+*** Specific work
+1. First I need to build the frame of gradle and npm to compile the Js and JAVA together.
+2. The design of database need some exploration of ALMA Data.
+
+** GroupMeeting with Mauricio
+1. Report the lustre problem which affects the user logging.
+2. I created 2 users for Jinhua He and Dominik Schleicher for test and later simulation.
+3. Mauricio contact the ISP to determine the connection problem between cerro calan and campus San Juaquin. I had asked Hernan to create an account for Mauricio Araya.
+4. 2 new virtual machine are created for me and I will use that to deploy our website. We may have some problem in public IP but it is not in a hurry.
+5. Mauricio would like to provide virtual desktop and Matiaz is working on that.
+6. Matiaz had updated the information required by Intel.
+7. Camilo would go to ALMA to retrieve about 20TB data. We would like to have 100TB data. The priority order would be cycle2, cycle3 cycle4 and then cycle0.
+8. We may use cmgui client to remote operate cluster. It's not for sure, we need to test it.
+9. Metadata extracted by UTFSM is about to be imported into database and take effects on the new ChiVO.
+ 
