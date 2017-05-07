@@ -14,3 +14,49 @@ The account can not be added because my account on datacenter is not in the sudo
   - jinhua he: pwd: 123456
 The users will be the one who will make simulations on the cluster.
 ** TODO lustre file not mounted				    :cluster:problem:
+   SCHEDULED: <2017-05-03 Wed>
+* 20170504
+* 20170505
+** structure of build tool chain of firefly			      :tools:
+I figure out how the gradle works with nodejs and how nodejs organize the frontend js files
+*** how gradle works					       :gradle:tools:
+Gradle are organized through build.gradle file. In build.gradle file, you can use plugins and add library as you need. 
+The most import plugin of nodejs in gradle is gradle-node-plugin. 
+The plugin can be used by adding the following line to the build.gradle file:
+#+BEGIN_SRC gradle
+plugins{
+    id "com.moowork.node" version "1.1.1"
+}
+
+apply plugins: 'com.moowork.node'
+#+END_SRC
+**** In Intellij Idea, if you add the above contents to the default build.gradle file. It will complain that the plugins{} is wrong and only plugins{} or script{} can be added before plugins{}. 
+Solution: delete the first line of comments will solve the problem
+**** The comments in gradle file
+- //
+- /* ... */
+*** how nodejs works					       :nodejs:tools:
+If you want to use react and redux things like that, you should understand how they are transformed into the final bundle.js file.
+You write javascript file using JSX format, then you need babel to use .babelrc configuration file to transform the JSX file into some other form of standard javascript language:
+(babel) JSX------>Standard javascript
+The standard javascript file will then be bundled by webpack using webpack.config.js file
+(webpack) Javascript ------> bundle.js
+* 20170506
+** communication
+Javascript can communicate with java using websocket or socket.io
+nodejs can communication with java using redis(pub/sub)
+** structure of wmux
+We can use both nodejs and java as backend together with the help of redis or something like that or we can use java as backend and communicate with javascript using websocket as firefly does.
+** package.json
+The most important part is the package name and version. The yarn and npm will write in the same package.json file without knowing each other in different way.
+** npm vs yarn					      :nodejs:npm:yarn:tools:
+The yarn is faster, I know nothing more.
+*** install
+yarn add <package> [ ||--dev]
+npm install [-g] <package>  --save||--save-dev
+yarn add <package> ~ n
+** webpack					       :nodejs:webpack:tools:
+Webpack is a tool to reorganize the js file based on dependency relationship of js file.
+Usually each page can have only one entrance js file, but you can add more entrance js file using multiple entrypoint file. It is relativly complex.
+See the [[https://webpack.github.io/docs/multiple-entry-points.html][webpack multiple-entry-points link]].
+
