@@ -1,5 +1,6 @@
 #+TITLE: wmux worklog
 #+AUTHOR: Lixin Yu
+#+OPTIONS: ^:nil
 #+LATEX: \newpage
 
 * 20170503
@@ -59,4 +60,100 @@ yarn add <package> ~ n
 Webpack is a tool to reorganize the js file based on dependency relationship of js file.
 Usually each page can have only one entrance js file, but you can add more entrance js file using multiple entrypoint file. It is relativly complex.
 See the [[https://webpack.github.io/docs/multiple-entry-points.html][webpack multiple-entry-points link]].
+
+* 20170507
+I build up the whole work place for wmux which include:
+- gradle
+- webpack
+- babel
+- react
+- redux
+* 20170508
+** babel-loader find directory recursively 	      :problem:babel:webpack:
+By inspecting the webpage using toggle tools, I found that the jsx file in subdirectory is also compiled and integrated into bundle.js.
+The problem is how to use css to modify the component.
+** CSS							       :css:ui:react:
+The css can be defined in each jsx file and i think this is reasonable because according to definition of css, it is assumed to work as cascade structure and thus making it in the very lower level would overwrite the upper level css specification and it is very rational.
+** Pictures: file-loader			   :file-loader:loader:react:
+The file loader is a good thing to display picture on web which is better than image-webpack-plugin that suffers some strange problem related with ENOENT or something it depends on.
+One notation is to notice that the file-loader should set the name of the output file including the directory path. The relative path is relative to the public path of the output parameter of webpack and the public path is a relative path to the path that the output file specified.
+** TODO The multi-entry problem 
+ 
+* 20170509
+** CSS							       :css:ui:react:
+The following link may be a guide:
+[[andrewhfarmer.com/how-to-style-react/][react-style-guide]]
+According to this guide, SCSS + autoprefixer [+ BEM] should be okay for me.
+But as I feel if I can make the css style inline with react would be very helpful, I would like to choose a inline css plugin and that is radium besides material-ui library will also be used.
+** ES7								 :future:ES7:
+ES7 adds decoration in  it and you need babel-plugin-syntax-decorators to be compatible with it and you need to modify the .babelrc into the following:
+#+BEGIN_SRC
+{
+    "presets": ["es2015", "react"],
+    "plugins": ["transform-class-properties",
+                "syntax-decorators"
+               ]
+}
+#+END_SRC
+** packages installed
+*** overlist
+['babel-plugin-transform-es2015-classes','babel-plugin-transform-decorators-legacy','radium','prop-types','babel-plugin-syntax-decorators', 'path','mozjpeg','pngquant','url-loader','img-loader','material-ui','paper','image-webpack-loader','file-loader', 'react', 'jsx', 'react-dom', 'redux','babel-cli', 'babel-loader', 'babel-core', 'babel-preset-es2015','babel-preset-es2017', 'babel-preset-react','babel-preset-stage-0','babel-preset-stage-1','babel-preset-stage-2', 'webpack', '--dev']
+*** prop-types 						   :package:comments:
+I install the package because the react complains that the accessing propTypes via react is deprecated in react v15.5 and later, you need to use prop-types package instead.
+The warning will be display even you don't call proptypes in the react code, because you may call it independently.
+*** babel-preset-2017
+Js evolved very fast, the es2017 provide a lot of new features and I need to embrace it ASAP.
+Feature like new way to initial class is more concise than that in es6 and es5.
+*** babel-plugin-transform-decorators-legacy
+This is kind of an official plugin for decorators, because decorators is new feature in es2017 not in es2015.
+*** radium						   :CSS:radium:react:
+This is the inline css plugin I will use and because I choose inline css plugin, so I can't and don't have to choose other type of css plugin like SCSS or BEM or any other non-inline css plugins.
+radium will be unmounted because it is replaced by aphrodite and css_module plugins plus a method called [[ITCSS]].
+*** babel-plugin-transform-es2015-classes
+The plugin is used to solve the problem that the class should declare constructor with new which Radium doesn't do it this way.
+
+*** material-ui
+This is a very powerful ui plugin I will use and it will save me time in design plugins.
+*** paper 
+This is needed by material at least some components in material.
+*** img-loader, mozjpeg, pngquant, image-webpack-loader
+These are removed form package list because they are replaced by file-loader. At the very beginning, they are supposed to provide the function to show images on the web but they failed.
+*** 
+** webpack							    :webpack:
+In webpack config file webpack.config.js, you can't use both "query" and "options", query is deprecated and you should use options only.
+
+** package.json
+in the last, there is code like this:
+#+BEGIN_SRC json
+
+"scripts": {
+    "build": "webpack"
+  },
+
+"babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+#+END_SRC
+The scripts part can not be removed because the webpack will have to read it. But the babel part is not necessary for webpack and should be able to be removed easily.
+** what I learn today by now
+*** es2017
+es2017 has a better feature in setting the constructor of a class but radium can not use it.
+*** webpack.config.js
+The config file should only use "options" as a key parameter, at least you can't use "options" with "query" together, that will cause the problem of webpack process.
+*** inline CSS
+As I believe it is most suitable to use CSS in the component, I think use inline CSS is a wise choise and I would use Radium to do the job.
+*** material-ui
+The material-ui is a class of gui thing which is carefully designed and should save a lot of time in building the website.
+*** IIFE
+IIFE will have great influence on the conditionals in JSX. See this link[[http://stackoverflow.com/questions/8228281/what-is-the-function-construct-in-javascript][IIFE]]. 
+** TODO draw the framwork of the ideal website and at least realize the first edition before end of tomorrow.
+* 20170510
+** CSS					    :css:aphrodite:css_module:ITTCSS:
+I met a lot of problem in radium and when I try to figure out the problem of inline css with SASS I found aphrodite. There is a good [[https://medium.com/maintainable-react-apps/journey-to-enjoyable-maintainable-styling-with-react-itcss-and-css-in-js-632cfa9c70d6][article]] talking about the css best practice. So I decide to change to this best practice.
+*** aphrodite
+*** css_module
+*** <<ITCSS>>
+ITCSS is inversed trangle CSS. It is not a framework nor a software, it is a principle by which the developers should follow in order to keep your css scalable, terse, logical and managable.
 
