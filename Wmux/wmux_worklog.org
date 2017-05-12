@@ -156,7 +156,7 @@ I met a lot of problem in radium and when I try to figure out the problem of inl
 *** css_module
 *** <<ITCSS>>
 ITCSS is inversed trangle CSS. It is not a framework nor a software, it is a principle by which the developers should follow in order to keep your css scalable, terse, logical and managable.
-*** material-ui							:material_ui:j
+*** material-ui							:material_ui:
 material-ui may use BEM principle which require you to name the components with PascalCamel rules.
 *** loader		       :loader:webpack:config:js_loader:babel_loader:
 To load the jsx file, you might need jsx-loader, but it is not for sure, I suspect you don't need that, but if you use it, put it before babel-loader.
@@ -164,3 +164,15 @@ To load the jsx file, you might need jsx-loader, but it is not for sure, I suspe
 When you use css, some plugins might have less inside it so you need to install less-loader to load less file.
 You might also have chance to meeet other requirement which you will have to meet them according to webpack error report.
 
+* 20170511
+** groupmeeting
+No much progress made and they want to make more changes on both hardware and software. We need to decide it later.
+*** move one computing node to provide service
+*** change to HDFS
+*** change BCM to free software
+** talk with chunhui
+Progress is not quick enough. I may have to put more attention on it.
+** fix path problem
+The resolve.root method is deprecated and I use resolve.alias to give the absolute path of the app root directory.
+** use import instead of var=require
+The import method is imported to ES6 recently and it is advanced than require method which is used in commonJS.
