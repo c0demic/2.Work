@@ -176,3 +176,90 @@ Progress is not quick enough. I may have to put more attention on it.
 The resolve.root method is deprecated and I use resolve.alias to give the absolute path of the app root directory.
 ** use import instead of var=require
 The import method is imported to ES6 recently and it is advanced than require method which is used in commonJS.
+* 20170515
+** react route is able to change the current page without refresh the page
+** the structure of the web is clear when I was in Gerado's office
+** CSS related
+*** put div on right side of page
+See the link [[http://stackoverflow.com/questions/5222523/position-a-div-container-on-the-right-side][positionOnRight]].
+
+* 20170516
+Works are updated on github, so here will miss something. Last week, I need to stay in office in cerro Calan. Efficiency is a little lower.
+** summary of knowledge of react redirect
+- browserHistory can and can only be imported by history package, react-router v4 doesn't provide it.
+- history push will have a "#" in front of the path desired.
+- browserHistory.push might no be able to use, it complains that the _history.browserHistory is undefined.
+- window.location.href="</path/to/dir.html>"
+  - remember that the </path/to/dir.html>:
+    - if it begins with a slash "/", it is the absolute path relative to the website root URL;
+    - if it begins without a slash "/", it is relative to the current URL. This is dangerous because you may find it hard to use the relative path, it can easily got you into trouble because you are not in the URL that supposed to be.
+  - you may find that using varible in window.location is very convenient when bundled with search bar. You can find some information from [[http://stackoverflow.com/questions/28250103/react-how-to-navigate-via-clickhandlers][here]]. 
+- transition is used only for internal URL. If you want to transfer to other domain use window.location or <a href=''>
+- Even if you can declare: 
+#+BEGIN_SRC
+contextTypes:{
+  router: React.PropTypes.object
+}
+#+END_SRC
+without problem, you still cannot use this.context.router.push('<url>'), the browser will complain context.router is undefined
+- ??figure out Redict usage
+- context.router exists only in react-router v>2 rc2 or v<1 rc3
+* 20170517
+** redux review
+
+*** action
+- action are plain js object;
+- action creator is a plain function that return action
+**** dispatch
+Dispatch is a function that dispatch a function, it can take parameter to complete the action, but finally it is just a plain function.
+**** bindActionCreators
+A function that bind several actions creators with one dispatcher
+
+*** Reducer
+A function tell what state should be returned when a action is dispatched.
+**** Reducer Decomposition
+You need to decompose the reducer into small part that make the maintainance easy. The main reducer need to call the decomposed reducer in the routine.
+***** combineReducers
+After you decompose the reducer into small part, you may combine them into one reducer using combineReducers function.
+****** key in combineReducers
+You can assign a key to combineReducers and each reducer only deal with the slice of state defined by the key. e.g.:
+#+BEGIN_SRC
+const reducer = combineReducers({
+  a: doSomethingWithA,
+  b: processB,
+  c: c
+})
+#+END_SRC
+which equals: 
+#+BEGIN_SRC
+function reducer(state = {}, action) {
+  return {
+    a: doSomethingWithA(state.a, action),
+    b: processB(state.b, action),
+    c: c(state.c, action)
+  }
+}
+#+END_SRC
+** react-redux flow deepin
+The whole story is very tricky and only practice and reading the code can make you really understand them, but the flow is much more clearer this time:
+*** state
+The state that will show on the page.
+*** action							      :redux:
+Indicate what you want to do with the state.
+*** reducer							      :redux:
+The only way to change the state.
+*** combine reducers
+You can and should decompose the reducer into small ones, and then use combineReducers function to combine them all into one single reducer.
+*** REACT UI						  :react:react_redux:
+**** presentational component
+Only show what you can see
+**** container component
+How the presentational component work
+*** store						  :redux:react_redux:
+Store is a thing that you can generate by calling createStore(rootReducer).
+*** connect						  :react_redux:redux:
+Connect is a function that connect the state and dispatch with props of component.
+*** provider						  :react_redux:redux:
+Provider can provide the reducer to the component, and then the reducer can change the state. After the state is changed into a new one, the state will be updated and the props will be updated and the page will refresh.
+*** subscribe
+Subscribe is a function that can make the listener know that state has changed and the listener will be called at the moment the state is refreshed.
