@@ -262,4 +262,39 @@ Connect is a function that connect the state and dispatch with props of componen
 *** provider						  :react_redux:redux:
 Provider can provide the reducer to the component, and then the reducer can change the state. After the state is changed into a new one, the state will be updated and the props will be updated and the page will refresh.
 *** subscribe
-Subscribe is a function that can make the listener know that state has changed and the listener will be called at the moment the state is refreshed.
+    Subscribe is a function that can make the listener know that state has changed and the listener will be called at the moment the state is refreshed.
+* 20170518
+** multiple entry for webpack
+This is a key point for webpack to support multiple application and has to be solved completely.
+*** multiple entry
+You can specify multiple entry in webpack.config.js and put them in the javascript object.
+#+BEGIN_SRC
+entry: {
+    <name1>:<path1>
+    , [name2:<path2>
+    , ...]
+},
+output: {
+    path:<output file path>,
+    filename: "[name].<bundle.js like file name>"
+    publicPath: <public path for page or something like that>
+},
+plugins: [name of plugin you use, pay attention ,this is confusing, the name is the name you give them, not the package name of the webpack!!]
+#+END_SRC
+*** commonPlugin
+In webpack v2, commonPlugin only takes one parameter, so you need to make all parameter in an javascript object. The form will look as follows:
+#+BEGIN_SRC
+let commonPlugin = new webpack.optimize.CommonChunkPlugin({
+    name: "<whatever>"
+    filename: '<output_js_file_name_ends_with .js>'
+})
+#+END_SRC
+You will need commonplugin that would solve some problem when the same module are used by multiple applications.
+Remember that commonPlugin is only used if you know which js file are common parts.
+
+** TODO test provide unnessary props to components	:props:react:problem:
+Given a function more parameter than its definition has no effects but the first argument could not be wrong. It is not the whole, because I suspect that if the first argument is wrong, it could be ignored safely by some mechanism like what the react tutorial do in Todo component.
+** redux deepin
+This is really a deep hole!
+*** State
+State is encapsulated, which means you should not specify the shape of state individually, you should make them distributed in the reducer which are responsible for them. You may get more information from [[http://stackoverflow.com/questions/33749759/read-stores-initial-state-in-redux-reducer/33791942#33791942][here]] and [[
