@@ -297,4 +297,64 @@ Given a function more parameter than its definition has no effects but the first
 ** redux deepin
 This is really a deep hole!
 *** State
-State is encapsulated, which means you should not specify the shape of state individually, you should make them distributed in the reducer which are responsible for them. You may get more information from [[http://stackoverflow.com/questions/33749759/read-stores-initial-state-in-redux-reducer/33791942#33791942][here]] and [[
+State is encapsulated, which means you should not specify the shape of state individually, you should make them distributed in the reducer which are responsible for them. You may get more information from [[http://stackoverflow.com/questions/33749759/read-stores-initial-state-in-redux-reducer/33791942#33791942][here]].
+* 20170519
+** webpack grammer trap						    :webpack:
+In webpack, if you want to use jsx as a entry point it is okay, but you must not add the following source code into your webpack.config.js file:
+#+BEGIN_SRC
+externals: {
+        'react': 'React'
+    },
+#+END_SRC
+THIS IS TOTALLY WRONG!!!!
+This told webpack don't bundle the react as this [[http://stackoverflow.com/questions/40312468/uncaught-referenceerror-react-is-not-defined-webpack][link]] told the truth!!!
+#+BEGIN_QUOTE
+This will exclude it from the bundle which would cause the error OP is seeing. This tells Webpack not to bundle React, but to expect that React will be available globally
+#+END_QUOTE
+
+The grammer bewteen webpack v2 has a lot of differences with webpack v1!!!!
+
+** Important
+All component should be named with a capital letter!!!!!! "Man" will work but "man" is nothing!!!!!!
+
+
+
+* 20170522
+** Breakthrough
+After the weekends, I finally work the problem out that now I can make the page interact with my input which means I can now input some information and get feedback from the page.
+*** Structure
+The structure looks as follows:
+- Actions: like redux says, it is breadcumb to indicate what you are going to do to the state;
+- Reducer: The only way to change state;
+- Component: The presentational part which doesn't care where the data is from or handle functions;
+- Container: The part that provide the props and state as props to the component it wraps.In container, there are 2 key functions: mapStateToProps and mapDispatchToProps.
+  - These 2 function are used to provide props and state as props to the component.
+
+*** ref
+- You can use ref to pass props to any deep level of components.
+- ref can only be used in DOM or class, you CAN NOT use it in functional component as it has no instance that can call <<ref>>. You need to read this [[https://facebook.github.io/react/docs/refs-and-the-dom.html][article]], it is very clear.
+*** controlled and uncontrolled component
+For some component, they have their own property like input or select something like that in html. It is better if you can take care of the data flow using js instead of the default behavior, using this method the component is called controlled component. Using [[ref]] is called uncontrolled component.
+*** PropTypes
+The list of PropTypes is a object with the prop name and a function which return a bool value,the function is to check if the requirement can be met, so you can write the function by yourself, you can see this [[http://stackoverflow.com/questions/33278862/reactjs-component-proptypes-specify-a-function-type-with-a-set-number-paramete][article]].
+ 
+* 20170523
+** javascript
+Spend some time in learning javascript and the communication between client and server.
+Websocket is kind of an update of http and it use http for the first time communication and then using only wss protocol to communicate with each other.
+* 20170524
+** websocket
+Establishing a connection using websocket is relatively easy but the java end is not that easy.
+*** structure of websocket in client end
+using a file to establish a connection and then include the client in all the script that will use it.
+** java
+The java server on the server end should be glass which is better than tomcat. Glassfish is a fully functional java EE server and tomcat is only a webcontainer for holding jsp, so I choose glassfish.
+*** glassfish
+glassfish v3 is no longer usable, use v4, nowadays, the version is v4.1.1 .The application directory is under domain folder with name application, you need to extract war ball to that directory. As far as I know, no war file keep its ball when deploying to the server.
+**** intellij integration			  :intellij:gradle:glassfish:
+Intellij has plugin for glassfish, and enable it you can get the support from it. The integration between these 2 is not good enough and needs a lot of work to do to get it work, do I need to change to netbeans or eclipse?
+The intellij can not directly bind gradle and javaEE together but you can make it manually.
+** STATUS
+now the problem is in the java side, I figure out how to configure out the deployment but don't understand the concept of endpoint which is important. The connection between client and server can be connected but not stable, I need to know why and fix it.
+*** TODO Endpoint						       :java:
+** TODO Try to establish a connection between client and server with database
