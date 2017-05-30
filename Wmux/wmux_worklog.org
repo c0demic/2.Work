@@ -358,3 +358,26 @@ The intellij can not directly bind gradle and javaEE together but you can make i
 now the problem is in the java side, I figure out how to configure out the deployment but don't understand the concept of endpoint which is important. The connection between client and server can be connected but not stable, I need to know why and fix it.
 *** TODO Endpoint						       :java:
 ** TODO Try to establish a connection between client and server with database
+* 20170529
+** websocket
+Making the javascript can communicate with java backend using websocket. From tomorrow, I need to build the whole website as a whole and this would be the combination of all things I had learned.
+*** some point
+websocket need the foldname to the websocket endpoint, it is hard to explain clearly, better with an example.
+#+BEGIN_SRC javascript
+var websocket = new WebSocket("ws://localhost:8080/<folder name>/<entry_point_name>");
+#+END_SRC
+The folder name is the name of the war ball!!!
+#+BEGIN_SRC java
+@ServerEndpoint("<entry_point_name>")
+#+END_SRC
+** TODO combining all together.
+Java is very easy to use for operating the database, no matter what kind of database, the rest thing is to build all the things together and provide service for astronomers.
+*** Database install
+*** CSS adjust
+*** new URL generation
+** java
+*** global
+method: public static
+varible: public static final
+*** jar
+Actually this is a pkzip file and you can include a "manifest" file in it which is used to specify the class that has main method to run.
