@@ -381,3 +381,6 @@ method: public static
 varible: public static final
 *** jar
 Actually this is a pkzip file and you can include a "manifest" file in it which is used to specify the class that has main method to run.
+* 20170530
+** directory structure
+The directory structure is determined. Making each subject a single page.
