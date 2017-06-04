@@ -456,3 +456,5 @@ I need to write the xml configuration file.
 	  - store
 	    - <provider-name>P.js
 	  - <app-name>.js
+** glassfish to payara
+I use payara as service provider because glassfish can not add jdbc successfully.
