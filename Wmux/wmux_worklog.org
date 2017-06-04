@@ -380,7 +380,79 @@ Java is very easy to use for operating the database, no matter what kind of data
 method: public static
 varible: public static final
 *** jar
-Actually this is a pkzip file and you can include a "manifest" file in it which is used to specify the class that has main method to run.
+    Actually this is a pkzip file and you can include a "manifest" file in it which is used to specify the class that has main method to run.
 * 20170530
 ** directory structure
 The directory structure is determined. Making each subject a single page.
+** follwo redux standard using duck rule
+See the [[https://github.com/erikras/ducks-modular-redux][link]].
+
+* 20170531
+** react-router history		     :react:react_router:router:history:core:
+history is a core concept and it can be divided roughly into 3 parts:
+- browserHistory
+  - The browserHistory is the one you should use for product environment and it generate a real URL like http://domainname/path/to/url. !BUT! this needs to be cooperate with server side render like nginx or apache httpd, or you may not be able to come back.
+- hashHistory
+  - It generate url like http://yourdomainname/#/path/to/url. You should not use that, because it is not simple, clean and some browser doesn't support it.
+- memoryHistory
+  - It will not change URL at all. 
+
+* 20170601
+** glassfish							  :glassfish:
+*** deployment							 :deployment:
+To use intellij idea with glassfish, I need to deploy it and the easiest way is to use the plugin integrated in idea IDE to deploy the 
+** idea
+- closing a project:
+  | file | close project |
+
+- setting of integration with glassfish:
+Run | Edit Configurations | /help/img/idea/2017.1/new.png | GlassFish Server | Local or Remote
+
+See the [[https://www.jetbrains.com/help/idea/2017.1/run-debug-configuration-glassfish-server.html][link]] below.
+* 20170602
+** mainbody
+framework of mainbody but need to be designed, I think maybe I need to make a demo first and then make it better.
+** store
+createStore needs a function as parameter, you can't use createStore() giving it a empty parameter, it will complain errors.
+** javascript							     :export:
+export {<name>} from <package> != export <name> from <package>
+These 2 cannot be changed with each other.
+*** named export
+export {<name>}
+*** unnamed export
+export <name>
+* 20170603
+** jdbc
+- figure out how jdbc connect with oracle database
+You should see this [[http://blog.payara.fish/payara-server-basics-integrating-payara-server-with-oracle-11g-xe][link]]. the last part in localhost:1521:<ORACLE_SID>
+But in my situiation, the name of oracle_SID is ORACLE_UNQNAME I havn't figure out what the relationship between but this is the result for now.
+This is a big step in dealing with the database, and it will be easy for me to deal with other database like mysql and sqlite etc.
+*** TODO xml configuration
+I need to write the xml configuration file. 
+** oracle
+*** TODO ORACLE_SID vs ORACLE_UNQNAME??
+    using oracle as a test database.
+** redux
+*** file rules:
+- directory
+  - webpack build dir: locate under the src/main/webapp folder;
+  - app folder(<app-name>): locate under the src/main/webapp folder;
+    - src
+      - main
+	- js
+	  - action
+	    - <action-name>A.jsx
+	  - bundle
+	    not sure if this will be used.
+	  - component
+	    - <component-name>.jsx
+	  - containers
+	    - <component-name>C.jsx
+	  - reducer
+	    - <reducer-name>F.jsx
+	    - <combineReducers-name>R.jsx
+	    - <store-name>S.jsx
+	  - resources
+	  - store
+	    - <provider-name>P.js
+	  - <app-name>.js
