@@ -458,3 +458,44 @@ I need to write the xml configuration file.
 	  - <app-name>.js
 ** glassfish to payara
 I use payara as service provider because glassfish can not add jdbc successfully.
+* 20170604
+** make 4 pages
+- home
+- jupyter
+- firefly
+- dataquery
+  - to show data from database using websocket and jdbc which was just built yesterday
+** combineReducers
+combineReducers must be given an object as parameter like below:
+#+BEGIN_SRC
+const <reducers-name>=combineReducers({<reducer, functions, list>});
+#+END_SRC
+
+** DONE websocket
+   SCHEDULED: <2017-06-04 Sun> DEADLINE: <2017-06-05 Mon>
+I had build a new websocket for the fully framework, the only problem happens at frontpage.js is the ActionHandler is not defined, while in firefly this function is related with reduxflux in src/firefly/js/core/messaging/messageHandlers.js file
+I don't need to copy this file, I can make my own function to take place of that!
+The progress is good, tomorrow I should be able to extract data from database.
+
+* 20170605
+** js arrow function
+- basic grammer: (<parameter1>,<parameter2>...)=>{}
+- to return a object (<parameter1>,<parameter2>...)=>({})
+** TODO websocket queue
+   SCHEDULED: <2017-06-05 Mon>
+*** build websocket queue
+    SCHEDULED: <2017-06-05 Mon>
+* 20170606
+** rpc vs rmi vs websocket
+do a primier search on the 3 protocols and decide which one to use
+* 20170607
+** rpc over websocket
+This is also a key component of the communication between client and server and is a high level protocol than websocket which communicate data using websocket. Figure the difference between rpc and rmi and websocket and also figure out the realization of rpc in firefly which can be a template for CASSACAVO.
+*** how it is realized
+It is very interesting that the client cut the http:// head from the url and add the sticky/cmdRsv varible to the rootURL obtained from function getRootURL and then send them through websocket protocol. Using this method, json data are transferred through web socket protocol.
+**** jsonRequest
+In charge of json data communication
+**** fetchURL
+A wrapper for fetch
+**** fetch
+A function realized in many browsers and used to communicate with server.
