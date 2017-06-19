@@ -1,0 +1,193 @@
+% Created 2017-06-17 Sat 22:33
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\author{Lixin Yu}
+\date{\today}
+\title{Minutes of China-Chile Database workshop}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 25.1.2 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+
+Attendees: Mauricio Solar, Mauricio Araya, Humberto Farias, Calos, Matias, Matine
+Attendees: Zhong Wang, Wei Wang, Nanyao Lv, Jinhua He, Lei Zhu, Chunhui Shi, Lixin Yu
+
+
+\section{Contents}
+\label{sec-1}
+\subsection{Data Access to Alma Data}
+\label{sec-1-1}
+\begin{itemize}
+\item part of open alma data(30TB)(bring by disks copy)
+\begin{itemize}
+\item all the open fits files are available
+\item lack ASDM(cycle 0,1,2 are available, cycle 3 are public but not sure if all cycle 3 are obtained)
+\end{itemize}
+\item data process
+\begin{itemize}
+\item access through vpn(jupyter)
+\item jupyter hub through docker
+\item lack of astromer testing jupyter
+\end{itemize}
+\item direct hpc computing
+\begin{itemize}
+\item simulation
+\item need to program with C
+\item software are provided by Huawei and might be changed further
+\end{itemize}
+\item Jovial
+\begin{itemize}
+\item no public IP, through vpn, need account
+\item HPC is not supported through GUI
+\item quota can be imposed through BCM
+\end{itemize}
+\item IP
+\begin{itemize}
+\item for service not public needed
+\end{itemize}
+\item VM
+\begin{itemize}
+\item 2 machine for vm, might need to move one from computing node to vm
+\begin{itemize}
+\item now everything is okay
+\end{itemize}
+\end{itemize}
+\item Apache Spark
+\begin{itemize}
+\item the part we are going to join
+\item june 29 10:00 spanish talk about archetecture
+\end{itemize}
+\item access
+\begin{itemize}
+\item public: VO
+\item private: HPC, Jovial
+\item management software: ibmc, neteco, smtp, lustre, ovirt, smtp, LDAP,
+\end{itemize}
+\item network
+\begin{itemize}
+\item calan: no reuna, problem in ISP(not solved yet)
+\begin{itemize}
+\item we are informed that calan would have an update for internet but we don't
+\item calan have a fiber but the property is catolica(but we can pay some money and make a big improvement to the internet bandwidth and share the bandwidth)
+\end{itemize}
+\end{itemize}
+\item Data
+\begin{itemize}
+\item 45TB data available
+\item ADQL similar to SQL
+\item first VO to deal with big data like ALMA
+\item only qa data(fits) and adsm file,
+\item metadata is about 1\% of the total meta data extract asdm
+\end{itemize}
+\end{itemize}
+
+\subsection{Service:}
+\label{sec-1-2}
+\begin{itemize}
+\item character: much faster for south american astronomy community
+\item provide btter stamp image
+\begin{itemize}
+\item 3D
+\item better than compressed icon image?
+\end{itemize}
+\end{itemize}
+
+\subsection{CASSACA and ChiVO:}
+\label{sec-1-3}
+\begin{itemize}
+\item CASSACA is more customized, ChiVO is like that
+\item ChiVO can provide the alma data, CASSACA is not authorized, CASSACA need to ask permissions
+\item ? Can Cassaca host other data that ChiVO host(gemini or other things)
+\item official name for chile-china astronomy data center and logo
+\item 
+\end{itemize}
+
+\subsection{Security and network Issue}
+\label{sec-1-4}
+\begin{itemize}
+\item no https only http
+\item user and password
+\item user restriction
+\begin{itemize}
+\item download bandwidth(put restriction on downloading site)
+\end{itemize}
+\item lustre
+\begin{itemize}
+\item we need to update lustre, if we update the lustre, the website would be down for 2 weeks
+\item now we can not update lustre
+\item we need help from huawei in china(??)
+\begin{itemize}
+\item can't get connection with Huawei people in China
+\item no more info from intel after they ask the log
+\end{itemize}
+\end{itemize}
+\item security
+\begin{itemize}
+\item virus?
+\item hack?
+\begin{itemize}
+\item port attack
+\item from china
+\end{itemize}
+\item carlos is making the webpage more secure
+\item no way to recover from attack in short time
+\item add ssl is quick and should be done after the development
+\end{itemize}
+\item casa install
+\begin{itemize}
+\item installed by each person
+\item no need to run casa on cluster if you don't run MPI, only the memory is large but if there are more people the memory is also low
+\item GUI can not work if network speed is slow
+\item 
+\end{itemize}
+\item archive update
+\begin{itemize}
+\item day by day: program will do it as frequently as  you want
+\item fits and other: not sure how frequently will be updated
+\end{itemize}
+\item jovial (service)
+\begin{itemize}
+\item not a library, not a GUI(aladin or topcat\ldots{})
+\item jupyter extention
+\item jupyter hub
+\item you can repeat the procedure with the paper
+\begin{itemize}
+\item starlink
+\item astropy
+\item casa
+\end{itemize}
+\item library
+\begin{itemize}
+\item acalib
+\item \ldots{}
+\end{itemize}
+\end{itemize}
+
+\item hardware
+\begin{itemize}
+\item move one computing node to vm
+\end{itemize}
+\end{itemize}
+% Emacs 25.1.2 (Org mode 8.2.10)
+\end{document}

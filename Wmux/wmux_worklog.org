@@ -499,3 +499,69 @@ In charge of json data communication
 A wrapper for fetch
 **** fetch
 A function realized in many browsers and used to communicate with server.
+* 20170608
+** ngas
+Now we can build tables in mysql. Ngas can connect to mysql. A good progress!!!
+File push and pull failed in test. This must be solved.
+** website
+*** problem
+- focus area: alma or include others
+this year we will only focus on alma, but the alma is considered as a module
+- search catalog
+  - fits
+  - ms
+** communication protocol
+*** websocket
+for long time(downloading data) or high frequency exchange of data or updates on time(like stock price or time)
+*** rpc 
+Solution: apache-turbine 
+**** web service
+It is a high level of rpc, the basis of web service is rpc.
+***** SOAP and REST
+SOAP: a old realization of web service using xml data
+REST: a modern realization of web service using json data 
+** json website
+*** RESTFul
+
+** spark
+I would like to try to use spark to connect to the database
+
+** websocket vs web service
+- websocket: for long time exchange of data or updates on time(like stock price or time)
+- web service: a http server response to SOAP/REST/JSON requests
+
+* 20170609
+** middleware
+*** redux-thunk
+*** redux-sage
+I would choose redux-sage as it is still being developed actively, thunk hasn't been updated for 2 years.
+** sparkjava
+This is different from apache spark and has nothing to do with it.
+I mistake it for apache spark which is designed to run cluster and distributed data.
+*** scala
+you need to install scala to run sparkjava framework
+*** jndi connection
+It seems that spark can not connect to database using jndi or you can use jetty maybe, you need search it.
+** j2ee
+it seems that j2ee is a standard that specify the api and so the other technical like spark or rest are just standarized plugin to j2ee so you may grab them and use them in j2ee framework easily. Don't worry too much about it.
+** idea
+*** annotation
+settings|compiler|annotation
+See the [[http://www.cnblogs.com/yjmyzz/p/lombok-with-intellij-idea.html][link]]
+*** scope problem
+There are 3 kind of scopes in gradle, but if you want to use them, you should use only compile scope and you can change other scope name into compile to get it worked.
+- compile
+- testCompile
+- provided
+* 20170610
+** idea REST
+See this [[https://www.jetbrains.com/help/idea/2017.1/creating-and-running-your-first-restful-web-service-on-glassfish-application-server.html#d76541e105][link]].
+*** REST vs non-REST http
+See the [[https://stackoverflow.com/questions/2191049/what-is-the-advantage-of-using-rest-instead-of-non-rest-http][link]].
+- simple
+- easy to expand
+* 20170615
+** TODO website
+1. do a research on client needs
+2. technical difficult on different parts
+3. full stack introduction

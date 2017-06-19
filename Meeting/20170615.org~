@@ -1,0 +1,102 @@
+#+Title: Minutes of China-Chile Database workshop
+#+AUTHOR: Lixin Yu
+#+LATEX: \newpage
+
+Attendees: Mauricio Solar, Mauricio Araya, Humberto Farias, Calos, Matias, Matine
+Attendees: Zhong Wang, Wei Wang, Nanyao Lv, Jinhua He, Lei Zhu, Chunhui Shi, Lixin Yu
+
+
+* Contents
+** Data Access to Alma Data
+- part of open alma data(30TB)(bring by disks copy)
+  - all the open fits files are available
+  - lack ASDM(cycle 0,1,2 are available, cycle 3 are public but not sure if all cycle 3 are obtained)
+- data process
+  - access through vpn(jupyter)
+  - jupyter hub through docker
+  - lack of astromer testing jupyter
+- direct hpc computing
+  - simulation
+  - need to program with C
+  - software are provided by Huawei and might be changed further
+- Jovial
+  - no public IP, through vpn, need account
+  - HPC is not supported through GUI
+  - quota can be imposed through BCM
+- IP
+  - for service not public needed
+- VM
+  - 2 machine for vm, might need to move one from computing node to vm
+    - now everything is okay
+- Apache Spark
+  - the part we are going to join
+  - june 29 10:00 spanish talk about archetecture
+- access
+  - public: VO
+  - private: HPC, Jovial
+  - management software: ibmc, neteco, smtp, lustre, ovirt, smtp, LDAP, 
+- network
+  - calan: no reuna, problem in ISP(not solved yet)
+    - we are informed that calan would have an update for internet but we don't
+    - calan have a fiber but the property is catolica(but we can pay some money and make a big improvement to the internet bandwidth and share the bandwidth)
+- Data
+  - 45TB data available
+  - ADQL similar to SQL
+  - first VO to deal with big data like ALMA
+  - only qa data(fits) and adsm file,
+  - metadata is about 1% of the total meta data extract asdm 
+    
+** Service:
+- character: much faster for south american astronomy community
+- provide btter stamp image
+  - 3D
+  - better than compressed icon image?
+
+** CASSACA and ChiVO:
+- CASSACA is more customized, ChiVO is like that
+- ChiVO can provide the alma data, CASSACA is not authorized, CASSACA need to ask permissions
+- ? Can Cassaca host other data that ChiVO host(gemini or other things)
+- official name for chile-china astronomy data center and logo
+- 
+
+** Security and network Issue
+- no https only http
+- user and password
+- user restriction
+  - download bandwidth(put restriction on downloading site)
+- lustre
+  - we need to update lustre, if we update the lustre, the website would be down for 2 weeks
+  - now we can not update lustre
+  - we need help from huawei in china(??)
+    - can't get connection with Huawei people in China
+    - no more info from intel after they ask the log
+- security
+  - virus?
+  - hack?
+    - port attack
+    - from china
+  - carlos is making the webpage more secure
+  - no way to recover from attack in short time
+  - add ssl is quick and should be done after the development
+- casa install
+  - installed by each person
+  - no need to run casa on cluster if you don't run MPI, only the memory is large but if there are more people the memory is also low
+  - GUI can not work if network speed is slow
+  - 
+- archive update
+  - day by day: program will do it as frequently as  you want
+  - fits and other: not sure how frequently will be updated
+- jovial (service)
+  - not a library, not a GUI(aladin or topcat...)
+  - jupyter extention
+  - jupyter hub
+  - you can repeat the procedure with the paper
+    - starlink
+    - astropy
+    - casa
+  - library
+    - acalib
+    - ...
+  
+- hardware
+  - move one computing node to vm

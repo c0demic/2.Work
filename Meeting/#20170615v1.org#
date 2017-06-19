@@ -1,0 +1,117 @@
+#+Title: Minutes of China-Chile Database workshop
+#+AUTHOR: Lixin Yu
+#+LATEX: \newpage
+
+Date: <2017-06-15 Thu>
+Attendees: Mauricio Solar, Mauricio Araya, Humberto Farias, Calos, Matias, Matine
+Attendees: Zhong Wang, Wei Wang, Nanyao Lv, Jinhua He, Lei Zhu, Chunhui Shi, Lixin Yu
+
+
+
+ 
+Mauricio solar
+Mauricio araya
+5 other people
+ 
+9:30: solar give opening speech
+9:40: araya talke 
+user service
+data access service
+jupyter
+hpc
+jovial
+calan internet service
+connection from san Joaquin to national internet is slow
+todo:
+change to free bcm
+move computing node to vm 
+ 
+ 
+10:10 humberto
+big picture: 4.5TB file
+simple picture access protocol
+ADQL query
+11：40
+nanyao what it means for data center is ready?
+Including more data from paranal;
+ 
+Zhong: first vo provid alma data;
+do we provide something  unique?
+Fast than ARC
+In  addition to standard VO
+Preview before downloading
+If we can has the data published 
+Security issue
+Need for improvement in long term
+Internet connection
+Connection is not bottlenet for now
+Bandwidth restriction: experts and amateur
+Risk of going down
+Electricity
+Update lustre
+Lustre is too old and not security
+Security public IP：for website it is difficult
+CASA for each user is independent
+TODO: casa multi-version not independent.
+Update data automatically
+3:20
+what kind of job use MPI
+alma is different for each project.
+Jinhua: Python vs other language
+Use the same library under the wrapper
+16:10 leizhu
+where to get fist
+qa2 check fits
+disadvantage: 
+dependent on science goal
+quanlity 
+cycle0 & 1
+meaningful for cycle0 and 1
+far from enough
+cycle 2 & 3
+enough
+nanyao & araya
+how to show stamp image
+show central image 
+compress image
+zooming to the center is risky
+select peak position
+nanyao & lei
+we don’t need asdm, only icon and fits, use fits to generate iconic image
+jinhua & lei & nanyao
+jcmt database is also very simple
+lei and nanyao
+alma has more parameter, but iconic image is only a image not providing information
+araya and nanyao
+using fit not asdm metadata, fits is much easier
+eachi science goal each project display the icon image
+source related paper
+araya & lei
+calibrated uv-fits is good to provide
+uvfits linked with fits and asdm
+16:40: nanyao
+17:00: 
+17:10: nanyao
+basic communication to users
+shot in faculty
+zhong:
+     faq more useful than help desk
+expert level service: 3d/ reproduce data
+data reproducing cookbook/scripts
+araya & jinhua…
+process time from log
+log can provide some information
+process time is linear to size or not
+ 
+17:30:round table
+zhong: what should I  do to reproduce data
+nanayao: download asdm file, run the script, calibrated data reproduce fits.
+Mauricio: run pipeline in jupyter, you may modify original pipeline script.
+ 
+Produce uvfits is a primary value-added 
+Provide imaging script which will be run in jupyter. 
+Lei: why should we do imaging.
+Nanyao: we would provide a comment..That is the key part we will provide.
+LSST will also use jupyter.
+ 
+
