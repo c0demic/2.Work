@@ -104,7 +104,25 @@ Attendees: Zhong Wang, Wei Wang, Nanyao Lv, Jinhua He, Lei Zhu, Chunhui Shi, Lix
       - calan have a fiber but the property is catolica(but we can pay some money and make a big improvement to the internet bandwidth and share the bandwidth)  
   - download
     - download bandwidth(put restriction on downloading site)
-
+** 20170619
+*** make the meeting twice a year
+*** web portal
+**** requirements
+- download by name or position
+- helpdesk
+- scalable
+- post-stamp images
   
+*** TODO need to realize the basic function
+help desk
+- webpage introduction: q & a and what it is. 
+- faq
 
+scalable: what function are needed to be in the same application?
 
+*** TODO discuss the gui with lei and others
+*** TODO make a demo this week
+*** what we need to do?
+- new technology of santa maria
+  - 
+- what else we can do

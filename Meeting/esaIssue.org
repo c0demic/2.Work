@@ -1,0 +1,14 @@
+* esa
+** purpose
+We are building something that can help us to peak into the future science. It seems that the application now is not that useful.
+
+** usage
+*** usage
+- search target or give position on the right upper corner
+  - kind of like a simple data downloading site
+- search use right click and then select database
+*** pros
+- stitch images together?
+- 
+*** cons
+- hard to survey without specific aims, you need to know the position exactly
